@@ -17,6 +17,7 @@ st.set_page_config(
     page_title="Consulta | Personas",
     page_icon="ID",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
 
 st.markdown(
@@ -49,8 +50,18 @@ html, body, [class*="css"] {
       var(--bg-main);
 }
 
-#MainMenu, header, footer {
+#MainMenu, footer {
     visibility: hidden;
+}
+
+/* Keep Streamlit's sidebar toggle available */
+header[data-testid="stHeader"] {
+    background: transparent;
+}
+
+[data-testid="collapsedControl"] {
+    display: flex !important;
+    visibility: visible !important;
 }
 
 .block-container {
@@ -108,7 +119,7 @@ html, body, [class*="css"] {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--text-muted);
+    color: #3f5870;
     margin-top: 0.4rem;
     margin-bottom: 0.55rem;
     font-weight: 800;
@@ -147,13 +158,13 @@ html, body, [class*="css"] {
     font-size: 2rem;
     line-height: 1.15;
     word-break: break-word;
-    color: #113347;
+    color: #0f2436 !important;
 }
 
 .person-meta {
     margin-top: 0.45rem;
     font-size: 1rem;
-    color: var(--text-muted);
+    color: #425a72 !important;
 }
 
 .token-box {
@@ -171,6 +182,47 @@ html, body, [class*="css"] {
 .small-note {
     color: var(--text-muted);
     font-size: 0.8rem;
+}
+
+/* Global readability fixes for light background */
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] li,
+[data-testid="stMarkdownContainer"] span {
+    color: #23384d;
+}
+
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3 {
+    color: #10283a;
+}
+
+h2.person-name {
+    color: #0f2436 !important;
+}
+
+[data-testid="stWidgetLabel"] p {
+    color: #2b4358 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em;
+}
+
+.stTextInput input,
+.stNumberInput input {
+    color: #122a3f !important;
+    font-weight: 600;
+}
+
+.stTextInput input::placeholder,
+.stNumberInput input::placeholder {
+    color: #6f8192 !important;
+    opacity: 1 !important;
+}
+
+[data-testid="stExpander"] details summary p,
+[data-testid="stExpander"] details summary span {
+    color: #173a53 !important;
+    font-weight: 700;
 }
 
 .stTextInput > div > div > input,
